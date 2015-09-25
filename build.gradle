@@ -1,0 +1,42 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'spring-data-redis-study'
+	version =  '0.0.1'
+}
+
+run {
+  systemProperties = System.properties
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compile("redis.clients:jedis:2.7.3")
+	compile("com.fasterxml.jackson.core:jackson-databind:2.6.2")
+	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.6.2")
+	compile("org.springframework.boot:spring-boot-starter")
+	compile("org.springframework.data:spring-data-redis:1.6.0.RELEASE")
+	
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.6'
+}
