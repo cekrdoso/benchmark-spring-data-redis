@@ -10,19 +10,18 @@ import org.springframework.data.redis.core.RedisTemplate;
 @Configuration
 public class ConfigForRedis {
 
-	@Value("${redis.host:localhost}")
-	private String _redisHostName;
+	@Value("${redis.host:redis-sentinel}")
+	private String _sentinelHostName;
 
-	@Value("${redis.port:6379}")
-	private Integer _redisPort;
+	@Value("${redis.port:26379}")
+	private Integer _sentinelPort;
 
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
-		final JedisConnectionFactory factory = new JedisConnectionFactory();
-		factory.setHostName(_redisHostName);
-		factory.setPort(_redisPort);
-		factory.setUsePool(true);
-		return factory;
+		final JedisConnectionFactory sentinelConfig = new JedisConnectionFactory()
+		.master("mymaster")
+		.sentinel(_redisHostName, _sentinelPort);
+		return new JedisConnectionFactory(sentinelConfig);
 	}
 
 	@Bean
