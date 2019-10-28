@@ -1,0 +1,36 @@
+---
+kind: pipeline
+name: benchmark-redis
+
+steps:
+- name: build
+  image: gradle:5.4.0-jdk11-slim
+  user: root
+  commands:
+  - mkdir -p app/
+  - rm -rf app/*
+  - ./gradlew clean build
+  - cp build/libs/benchmark-spring-data-redis-0.0.1.jar app/app.jar
+  when:
+    branch:
+    - master
+    event:
+    - push
+    - tag
+
+- name: publish
+  image: plugins/docker:linux-amd64
+  user: root
+  settings:
+    auto_tag: true
+    dockerfile: Dockerfile
+    context: app/
+    repo: cekrdoso/benchmark-redis
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    event:
+    - push
+    - tag
