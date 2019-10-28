@@ -11,3 +11,7 @@ services:
       endpoint_mode: dnsrr
       restart_policy:
         condition: on-failure
+
+networks:
+  net-redis:
+    external: true
