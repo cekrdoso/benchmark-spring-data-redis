@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-oracle
+FROM adoptopenjdk:8-jdk-hotspot
 
 COPY app.jar /app
 

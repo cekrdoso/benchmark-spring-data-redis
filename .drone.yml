@@ -4,9 +4,10 @@ name: benchmark-redis
 
 steps:
 - name: build
-  image: gradle:5.4.0-jdk11-slim
+  image: 5.6.3-jdk8
   user: root
   commands:
+  - ls -al
   - mkdir -p app/
   - rm -rf app/*
   - chmod +x gradlew
