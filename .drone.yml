@@ -9,6 +9,7 @@ steps:
   commands:
   - mkdir -p app/
   - rm -rf app/*
+  - chmod +x gradlew
   - ./gradlew clean build
   - cp build/libs/benchmark-spring-data-redis-0.0.1.jar app/app.jar
   when:
