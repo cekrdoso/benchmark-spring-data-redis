@@ -3,6 +3,7 @@ package hudsonmendes.lab.springDataRedis;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,9 +19,9 @@ public class ConfigForRedis {
 
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
-		final JedisConnectionFactory sentinelConfig = new JedisConnectionFactory()
+		RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration()
 		.master("mymaster")
-		.sentinel(_redisHostName, _sentinelPort);
+		.sentinel(_sentinelHostName, _sentinelPort);
 		return new JedisConnectionFactory(sentinelConfig);
 	}
 

@@ -32,12 +32,12 @@ dependencies {
 	compile("com.fasterxml.jackson.core:jackson-databind:2.6.2")
 	compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.6.2")
 	compile("org.springframework.boot:spring-boot-starter")
-	compile("org.springframework.data:spring-data-redis:1.6.0.RELEASE")
+	compile("org.springframework.data:spring-data-redis:1.7.2.RELEASE")
 	
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
-
+/*
 wrapper {
 	gradleVersion = '1.6'
-}
+}*/
