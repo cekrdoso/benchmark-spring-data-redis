@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+
+  redis-client:
+    image: cekrdoso/benchmark-redis:latest
+    networks:
+      - net-redis
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      restart_policy:
+        condition: on-failure
