@@ -17,8 +17,56 @@ public class EntryGeneratorServiceRunner implements Runnable {
 	private final static List<String> MESSAGES = new ArrayList<>();
 	private final static Random RANDOM = new Random();
 	private final static String[] WORDS = new String[] {
-			"jump", "pizza", "suspicion", "narrative", "bridge",
-			"slide", "spring", "sabotage", "comfortable", "conscious"
+		"ability", "according", "account", "activity", "actually",
+		"address", "against", "agreement", "already", "although",
+		"American", "analysis", "another", "anything", "approach",
+		"attention", "attorney", "audience", "authority", "available",
+		"beautiful", "because", "behavior", "believe", "benefit",
+		"between", "billion", "brother", "building", "business",
+		"campaign", "candidate", "capital", "central", "century",
+		"certain", "certainly", "challenge", "character", "citizen",
+		"clearly", "collection", "college", "commercial", "community",
+		"company", "compare", "computer", "concern", "condition",
+		"conference", "Congress", "consider", "consumer", "contain",
+		"continue", "control", "country", "cultural", "culture",
+		"current", "customer", "daughter", "decision", "defense",
+		"Democrat", "democratic", "describe", "despite", "determine",
+		"develop", "difference", "different", "difficult", "direction",
+		"economic", "economy", "education", "election", "employee",
+		"especially", "establish", "evening", "everybody", "everyone",
+		"experience", "explain", "federal", "feeling", "finally",
+		"financial", "foreign", "forward", "general", "generation",
+		"government", "herself", "himself", "history", "hospital",
+		"however", "hundred", "husband", "identify", "imagine",
+		"important", "improve", "include", "including", "increase",
+		"indicate", "individual", "industry", "instead", "interest",
+		"interview", "investment", "involve", "kitchen", "knowledge",
+		"language", "machine", "magazine", "maintain", "majority",
+		"management", "manager", "marriage", "material", "measure",
+		"medical", "meeting", "mention", "message", "military",
+		"million", "mission", "morning", "movement", "national",
+		"natural", "necessary", "network", "newspaper", "nothing",
+		"officer", "official", "operation", "outside", "painting",
+		"particular", "partner", "patient", "pattern", "perform",
+		"perhaps", "personal", "physical", "picture", "political",
+		"politics", "popular", "population", "position", "positive",
+		"possible", "practice", "prepare", "present", "president",
+		"pressure", "prevent", "private", "probably", "problem",
+		"process", "produce", "product", "production", "professor",
+		"program", "project", "property", "protect", "provide",
+		"purpose", "quality", "question", "quickly", "reality",
+		"realize", "receive", "recently", "recognize", "reflect",
+		"religious", "remember", "represent", "Republican", "require",
+		"research", "resource", "respond", "response", "science",
+		"scientist", "section", "security", "serious", "service",
+		"several", "shoulder", "similar", "situation", "society",
+		"soldier", "somebody", "someone", "something", "sometimes",
+		"station", "strategy", "structure", "student", "subject",
+		"successful", "suddenly", "suggest", "support", "surface",
+		"teacher", "technology", "television", "themselves", "thought",
+		"thousand", "through", "together", "tonight", "training",
+		"treatment", "trouble", "understand", "usually", "various",
+		"violence", "western", "whatever", "without", "yourself"
 	};
 
 	private List<EntryEventGenerated> _listeners;
@@ -45,7 +93,7 @@ public class EntryGeneratorServiceRunner implements Runnable {
 		assertRequirements();
 		while (true) {
 			generateNewEvent();
-			Sleep.seconds(1);
+			Sleep.milliseconds(500);
 		}
 	}
 
