@@ -13,6 +13,16 @@ public final class Sleep {
 		}
 	}
 
+	public static void milliseconds(final Integer milliseconds) {
+		Assert.notNull(milliseconds, "'milliseconds' cannot be null.");
+		Assert.isTrue(milliseconds > 0, "'milliseconds' must be bigger than 0");
+		try {
+			Thread.sleep(milliseconds * 1L);
+		} catch (final InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private Sleep() {
 	}
 }
