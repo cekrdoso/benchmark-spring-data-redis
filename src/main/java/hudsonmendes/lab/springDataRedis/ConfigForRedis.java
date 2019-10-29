@@ -19,10 +19,27 @@ public class ConfigForRedis {
 
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
-		RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration()
-		.master("mymaster")
-		.sentinel(_sentinelHostName, _sentinelPort);
-		return new JedisConnectionFactory(sentinelConfig);
+		JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(this.redisSentinelConfiguration(),
+				this.jedisPoolConfig());
+		return jedisConnectionFactory;
+	}
+
+	@Bean
+	public RedisSentinelConfiguration redisSentinelConfiguration() {
+		return new RedisSentinelConfiguration()
+					.master("mymaster")
+					.sentinel(_sentinelHostName, _sentinelPort);
+	}
+
+	@Bean
+	public JedisPoolConfig jedisPoolConfig() {
+		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+		jedisPoolConfig.setMaxTotal(5);
+		jedisPoolConfig.setMaxIdle(0);
+		//jedisPoolConfig.setMinIdle(1);
+		jedisPoolConfig.setMaxWaitMillis(10000);
+		jedisPoolConfig.setTestOnBorrow(true);
+		return jedisPoolConfig;
 	}
 
 	@Bean
